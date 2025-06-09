@@ -22,8 +22,10 @@ payload:
   - DOMAIN-SUFFIX,qtck.work
   - DOMAIN-SUFFIX,zztfly.com
   - DOMAIN-SUFFIX,volccdn.com
-  #  剪映
+  #  剪映，即梦
   - DOMAIN-SUFFIX,jianying.com
+  - DOMAIN-SUFFIX,faceu.mobi
+  - DOMAIN-SUFFIX,vlabvod.com
   #  希沃
   - DOMAIN-SUFFIX,seewo.com
   #  Linux.do
