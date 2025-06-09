@@ -19,7 +19,7 @@ def convert_list_to_yaml(input_path, output_path):
                 yaml_lines.append(f'  # {stripped.lstrip("# ")}' if stripped.startswith('##') else f'  # {stripped[1:]}')
             else:
                 # Convert rules to YAML list format
-                yaml_lines.append(f'  - "{stripped}"')
+                yaml_lines.append(f'  - {stripped}')
         
         with open(output_path, 'w', encoding='utf-8') as f:
             f.write('\n'.join(yaml_lines))
