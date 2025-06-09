@@ -1,5 +1,5 @@
 payload:
-  # 自定规则集
+  #  自定规则集
   - "DOMAIN-SUFFIX,quanxinfu.com"
   - "DOMAIN-SUFFIX,mallcoo.net"
   - "DOMAIN-SUFFIX,mixcapp.com"
@@ -23,104 +23,104 @@ payload:
   - "DOMAIN-SUFFIX,qtck.work"
   - "DOMAIN-SUFFIX,zztfly.com"
   - "DOMAIN-SUFFIX,volccdn.com"
-  ## 希沃
+  # 希沃
   - "DOMAIN-SUFFIX,seewo.com"
-  ## Linux.do
+  # Linux.do
   - "DOMAIN-SUFFIX,linux.do"
-  ## 易车
+  # 易车
   - "DOMAIN-SUFFIX,bitautoimg.com"
   - "DOMAIN-SUFFIX,yiche.com"
-  ## 爱回收
+  # 爱回收
   - "DOMAIN-SUFFIX,aihuishou.com"
-  ## 飞牛私有云
+  # 飞牛私有云
   - "DOMAIN-SUFFIX,5ddd.com"
   - "DOMAIN-SUFFIX,fnnas.com"
-  ## 腾讯
+  # 腾讯
   - "DOMAIN-SUFFIX,tencentcs.com"
-  ## 趣评测
+  # 趣评测
   - "DOMAIN-SUFFIX,qupingce.com"
-  ## MH 伙伴
+  # MH 伙伴
   - "DOMAIN-SUFFIX,roguelitegames.com"
-  ## 誉铭
+  # 誉铭
   - "DOMAIN-SUFFIX,yumingsheying.com"
-  ## EasyScholar
+  # EasyScholar
   - "DOMAIN-SUFFIX,easyscholar.cc"
-  ## RousiPT
+  # RousiPT
   - "DOMAIN-SUFFIX,rousi.zip"
-  ## 火山引擎
+  # 火山引擎
   - "DOMAIN-SUFFIX,volcengine.com"
-  ## DeepSeek
+  # DeepSeek
   - "DOMAIN-SUFFIX,deepseek.com"
-  ## 通义千问
+  # 通义千问
   - "DOMAIN-SUFFIX,qwenlm.ai"
-  ## Stage 1st
+  # Stage 1st
   - "DOMAIN-SUFFIX,stage1st.com"
   - "DOMAIN-SUFFIX,saraba1st.com"
-  ## 富滇银行
+  # 富滇银行
   - "DOMAIN-SUFFIX,fudian-bank.com"
-  ## 小鹅通
+  # 小鹅通
   - "DOMAIN-SUFFIX,xeknow.com"
   - "DOMAIN-SUFFIX,xiaoeknow.com"
   - "DOMAIN-SUFFIX,xetsl.com"
-  ## DCloud
+  # DCloud
   - "DOMAIN-SUFFIX,dcloud.io"
-  ## 机械工业出版社
+  # 机械工业出版社
   - "DOMAIN-SUFFIX,cmpedu.com"
-  ## 盛趣游戏
+  # 盛趣游戏
   - "DOMAIN-SUFFIX,sdo.com"
-  ## 中国石油
+  # 中国石油
   - "DOMAIN-SUFFIX,kunlunjyk.com"
-  ## 中国石化
+  # 中国石化
   - "DOMAIN-SUFFIX,sinopec.com"
-  ## ETC
+  # ETC
   - "DOMAIN-SUFFIX,yngst-ycic.com"
   - "DOMAIN-SUFFIX,all-in-data.com"
   - "DOMAIN-SUFFIX,yigaosu.com"
   - "DOMAIN-SUFFIX,appykt.com"
-  ## 懂球帝
+  # 懂球帝
   - "DOMAIN-SUFFIX,treewill.com"
   - "DOMAIN-SUFFIX,qunliao.info"
   - "DOMAIN-SUFFIX,dongqiudi.com"
-  ## 一汽大众
+  # 一汽大众
   - "DOMAIN-SUFFIX,faw-vw.com"
-  ## 闲鱼
+  # 闲鱼
   - "DOMAIN-SUFFIX,goofish.com"
   - "DOMAIN-SUFFIX,alibabachengdun.com"
-  ## 最会买
+  # 最会买
   - "DOMAIN-SUFFIX,bytecdntp.com"
   - "DOMAIN-SUFFIX,easemob.com"
   - "DOMAIN-SUFFIX,zuihuimai.com"
-  ## CHH
+  # CHH
   - "DOMAIN-SUFFIX,chiphell.com"
-  ## 标软体检网
+  # 标软体检网
   - "DOMAIN-SUFFIX,biaoruan.wang"
-  ## 收钱吧
+  # 收钱吧
   - "DOMAIN-SUFFIX,shouqianba.com"
-  ## 小红书
+  # 小红书
   - "DOMAIN-SUFFIX,xhslink.com"
-  ## 京东服务
+  # 京东服务
   - "DOMAIN-SUFFIX,jdcloud-oss.com"
-  ## 海尔
+  # 海尔
   - "DOMAIN-SUFFIX,haier.net"
   - "DOMAIN-SUFFIX,haiershui.com"
-  ## 兔喜
+  # 兔喜
   - "DOMAIN-SUFFIX,zto.com"
   - "DOMAIN-SUFFIX,zt-express.com"
-  ## TapTap
+  # TapTap
   - "DOMAIN-SUFFIX,taptapdada.com"
   - "DOMAIN-SUFFIX,tapimg.com"
-  ## 昆明教育人才网
+  # 昆明教育人才网
   - "DOMAIN-SUFFIX,kmjyrc.com"
-  ## 交通银行
+  # 交通银行
   - "DOMAIN-SUFFIX,bankcomm.com"
-  ## 水滴筹
+  # 水滴筹
   - "DOMAIN-SUFFIX,shuidichou.com"
   - "DOMAIN-SUFFIX,shuidihuzhu.com"
-  ## 东航
+  # 东航
   - "DOMAIN-SUFFIX,ceair.com"
-  ## 顺丰快递
+  # 顺丰快递
   - "DOMAIN-SUFFIX,sf-pay.com"
-  ## 快手
+  # 快手
   - "USER-AGENT,Hodor*"
   - "DOMAIN-KEYWORD,kuaishou"
   - "DOMAIN-KEYWORD,kwai"
@@ -138,51 +138,51 @@ payload:
   - "DOMAIN-SUFFIX,kwaizt.com"
   - "DOMAIN-SUFFIX,httpdns.pro"
   - "DOMAIN-SUFFIX,kwimgs.com"
-  ## 盒马
+  # 盒马
   - "DOMAIN-SUFFIX,hzshudian.com"
   - "DOMAIN-SUFFIX,freshippo.com"
-  ## 支付
+  # 支付
   - "DOMAIN-SUFFIX,ynhtbank.com"
-  ## 微信
+  # 微信
   - "DOMAIN-SUFFIX,servicewechat.com"
   - "DOMAIN-SUFFIX,wxcloudrun.com"
-  ## 扇贝
+  # 扇贝
   - "DOMAIN-SUFFIX,hunbei.com"
   - "DOMAIN-SUFFIX,shanbay.com"
   - "DOMAIN-SUFFIX,baydn.com"
   - "DOMAIN-SUFFIX,17bdc.com"
-  ## 命运圣契
+  # 命运圣契
   - "DOMAIN-SUFFIX,jzyx.com"
-  ## 九机
+  # 九机
   - "DOMAIN-SUFFIX,9ji.com"
   - "DOMAIN-SUFFIX,9xun.com"
   - "DOMAIN-SUFFIX,ch999img.com"
   - "DOMAIN-SUFFIX,cl2009.com"
-  ## 万师傅
+  # 万师傅
   - "DOMAIN-SUFFIX,wanshifu.com"
   - "DOMAIN-SUFFIX,wanshifuapp.com"
-  ## 机核
+  # 机核
   - "DOMAIN-SUFFIX,gcores.com"
-  ## 蜜雪冰城
+  # 蜜雪冰城
   - "DOMAIN-SUFFIX,mxbc.net"
-  ## 瑞幸咖啡
+  # 瑞幸咖啡
   - "DOMAIN-SUFFIX,yyds.co"
   - "DOMAIN-SUFFIX,luckincoffeecdn.com"
   - "DOMAIN-SUFFIX,lkcoffee.com"
-  ## 库迪咖啡
+  # 库迪咖啡
   - "DOMAIN-SUFFIX,cotticoffee.com"
-  ## 古茗
+  # 古茗
   - "DOMAIN-SUFFIX,gumingnc.com"
   - "DOMAIN-SUFFIX,iguming.net"
   - "DOMAIN-SUFFIX,tongdun.net"
-  ## 茶百道
+  # 茶百道
   - "DOMAIN-SUFFIX,shuxinyc.com"
-  ## 彩云天气
+  # 彩云天气
   - "DOMAIN-SUFFIX,caiyunapp.com"
   - "DOMAIN-SUFFIX,colorfulclouds.net"
   - "DOMAIN-SUFFIX,cyapi.cn"
   - "DOMAIN-SUFFIX,caiyuncdn.com"
-  ## 超星学习通
+  # 超星学习通
   - "DOMAIN-SUFFIX,aichaoxing.com"
   - "DOMAIN-SUFFIX,tingyun.com"
   - "DOMAIN-SUFFIX,chaoxing.com"
@@ -190,22 +190,22 @@ payload:
   - "DOMAIN-SUFFIX,xuexitong.com"
   - "DOMAIN-SUFFIX,cldisk.com"
   - "DOMAIN-SUFFIX,downza.com"
-  ## 赞噢校园集市
+  # 赞噢校园集市
   - "DOMAIN-SUFFIX,zanoa.cn"
   - "DOMAIN-SUFFIX,zanao.com"
-  ## 易校园
+  # 易校园
   - "DOMAIN-SUFFIX,yixiaoyuan.com"
   - "DOMAIN-SUFFIX,xiaofubao.com"
-  ## 中国大学MOOC
+  # 中国大学MOOC
   - "DOMAIN-SUFFIX,icourse163.com"
-  ## 米家
+  # 米家
   - "DOMAIN-SUFFIX,miot-spec.org"
-  ## 爱奇艺体育
+  # 爱奇艺体育
   - "DOMAIN-SUFFIX,iqiyi.com"
   - "DOMAIN-SUFFIX,ssports.com"
   - "DOMAIN-SUFFIX,sportnanoapi.com"
-  ## OPENAI API
+  # OPENAI API
   - "DOMAIN-SUFFIX,aihubmix.com"
-  ## 路过图床
+  # 路过图床
   - "DOMAIN-SUFFIX,ax1x.com"
   - "DOMAIN-SUFFIX,imgse.com"
