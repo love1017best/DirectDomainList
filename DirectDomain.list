@@ -23,6 +23,8 @@ DOMAIN-SUFFIX,fuioupay.com
 DOMAIN-SUFFIX,qtck.work
 DOMAIN-SUFFIX,zztfly.com
 DOMAIN-SUFFIX,volccdn.com
+# 腾讯游戏
+DOMAIN-SUFFIX,gcloudsvcs.com
 # 剪映，即梦
 DOMAIN-SUFFIX,jianying.com
 DOMAIN-SUFFIX,faceu.mobi
