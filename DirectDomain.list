@@ -23,6 +23,11 @@ DOMAIN-SUFFIX,fuioupay.com
 DOMAIN-SUFFIX,qtck.work
 DOMAIN-SUFFIX,zztfly.com
 DOMAIN-SUFFIX,volccdn.com
+# 智慧树
+DOMAIN-SUFFIX,zhihuishu.com
+# 小熊油耗
+DOMAIN-SUFFIX,xiaoxiongyouhao.com
+DOMAIN-SUFFIX,pangolin-sdk-toutiao1.com
 # 腾讯游戏
 DOMAIN-SUFFIX,gcloudsvcs.com
 # 剪映，即梦
