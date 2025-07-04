@@ -24,6 +24,8 @@ payload:
   - DOMAIN-SUFFIX,qtck.work
   - DOMAIN-SUFFIX,zztfly.com
   - DOMAIN-SUFFIX,volccdn.com
+  #  小鹏汽车
+  - DOMAIN-SUFFIX,xiaopeng.com
   #  咔咔洗车
   - DOMAIN-SUFFIX,easydodo.net
   - DOMAIN-SUFFIX,ersiman.top
