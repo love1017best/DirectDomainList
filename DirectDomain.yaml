@@ -24,6 +24,13 @@ payload:
   - DOMAIN-SUFFIX,qtck.work
   - DOMAIN-SUFFIX,zztfly.com
   - DOMAIN-SUFFIX,volccdn.com
+  - DOMAIN-SUFFIX,little-origin.com
+  #  博时基金
+  - DOMAIN-SUFFIX,bosera.com
+  - DOMAIN-SUFFIX,bsmatrix.com
+  #  昆明智慧通
+  - DOMAIN-SUFFIX,kmzhihuitong.com
+  - DOMAIN-SUFFIX,bwton.com
   #  转转
   - DOMAIN-SUFFIX,zhuanzhuan.com
   - DOMAIN-SUFFIX,zhuanstatic.com
