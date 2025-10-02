@@ -25,6 +25,14 @@ payload:
   - DOMAIN-SUFFIX,zztfly.com
   - DOMAIN-SUFFIX,volccdn.com
   - DOMAIN-SUFFIX,little-origin.com
+  - DOMAIN-SUFFIX,icostapp.com
+  - DOMAIN-SUFFIX,hibianli.com
+  - DOMAIN-SUFFIX,shujupie.com
+  - DOMAIN-SUFFIX,baihemob.com
+  #  千岛App
+  - DOMAIN-SUFFIX,qiandao.com
+  #  理想汽车
+  - DOMAIN-SUFFIX,lixiang.com
   #  博时基金
   - DOMAIN-SUFFIX,bosera.com
   - DOMAIN-SUFFIX,bsmatrix.com
