@@ -118,6 +118,7 @@ payload:
   - DOMAIN-SUFFIX,dongqiudi.com
   #  一汽大众
   - DOMAIN-SUFFIX,faw-vw.com
+  - DOMAIN-SUFFIX,mosi-tech.com
   #  闲鱼
   - DOMAIN-SUFFIX,goofish.com
   - DOMAIN-SUFFIX,alibabachengdun.com
