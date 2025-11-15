@@ -29,6 +29,10 @@ payload:
   - DOMAIN-SUFFIX,hibianli.com
   - DOMAIN-SUFFIX,shujupie.com
   - DOMAIN-SUFFIX,baihemob.com
+  #  Steam CDN
+  - DOMAIN-SUFFIX,steamserver.com
+  - DOMAIN-SUFFIX,cm.steampowered.com
+  - DOMAIN,steamcdn-a.akamaihd.net
   #  千岛App
   - DOMAIN-SUFFIX,qiandao.com
   #  理想汽车
