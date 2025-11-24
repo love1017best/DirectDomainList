@@ -30,6 +30,7 @@ DOMAIN-SUFFIX,shujupie.com
 DOMAIN-SUFFIX,baihemob.com
 # Steam CDN
 DOMAIN-SUFFIX,steamserver.com
+DOMAIN-SUFFIX,steamserver.net
 DOMAIN-SUFFIX,cm.steampowered.com
 DOMAIN,steamcdn-a.akamaihd.net
 # 千岛App
@@ -63,8 +64,6 @@ DOMAIN-SUFFIX,faceu.mobi
 DOMAIN-SUFFIX,vlabvod.com
 # 希沃
 DOMAIN-SUFFIX,seewo.com
-# Linux.do
-DOMAIN-SUFFIX,linux.do
 # 易车
 DOMAIN-SUFFIX,bitautoimg.com
 DOMAIN-SUFFIX,yiche.com
