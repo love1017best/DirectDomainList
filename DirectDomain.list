@@ -28,6 +28,8 @@ DOMAIN-SUFFIX,icostapp.com
 DOMAIN-SUFFIX,hibianli.com
 DOMAIN-SUFFIX,shujupie.com
 DOMAIN-SUFFIX,baihemob.com
+# AED
+DOMAIN-SUFFIX,coment.com
 # Steam CDN
 DOMAIN-SUFFIX,steamserver.com
 DOMAIN-SUFFIX,steamserver.net
