@@ -29,6 +29,8 @@ payload:
   - DOMAIN-SUFFIX,hibianli.com
   - DOMAIN-SUFFIX,shujupie.com
   - DOMAIN-SUFFIX,baihemob.com
+  #  FF14
+  - DOMAIN-SUFFIX,jijiagames.com
   #  AED
   - DOMAIN-SUFFIX,coment.com
   #  Steam CDN
