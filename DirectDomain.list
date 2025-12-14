@@ -28,6 +28,8 @@ DOMAIN-SUFFIX,icostapp.com
 DOMAIN-SUFFIX,hibianli.com
 DOMAIN-SUFFIX,shujupie.com
 DOMAIN-SUFFIX,baihemob.com
+# Epic Game Store CDN
+DOMAIN-SUFFIX,dl.eccdnx.com
 # FF14
 DOMAIN-SUFFIX,jijiagames.com
 # AED
