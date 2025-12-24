@@ -29,6 +29,8 @@ payload:
   - DOMAIN-SUFFIX,hibianli.com
   - DOMAIN-SUFFIX,shujupie.com
   - DOMAIN-SUFFIX,baihemob.com
+  #  云南农信
+  - DOMAIN-SUFFIX,ynrcc.com
   #  FF14
   - DOMAIN-SUFFIX,jijiagames.com
   #  AED
