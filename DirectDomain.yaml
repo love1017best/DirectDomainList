@@ -31,6 +31,7 @@ payload:
   - DOMAIN-SUFFIX,baihemob.com
   # 鸣潮
   - DOMAIN-SUFFIX,kurogames.com
+  - DOMAIN-SUFFIX,kurogame.xyz
   - DOMAIN-SUFFIX,agi-game.com
   # 云南农信
   - DOMAIN-SUFFIX,ynrcc.com
