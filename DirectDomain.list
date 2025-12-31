@@ -55,6 +55,10 @@ DOMAIN,analytics.strava.com
 # > Umeng
 DOMAIN,msg.umeng.com
 DOMAIN,msg.umengcloud.com
+# 小红书CDN
+DOMAIN-SUFFIX,xinqiucc.com
+DOMAIN-SUFFIX,tianwenca.com
+DOMAIN-SUFFIX,qiezibenpao.com
 # 沃尔玛
 DOMAIN-SUFFIX,ghsmpwalmart.com
 # 鸣潮
