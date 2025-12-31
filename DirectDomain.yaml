@@ -56,6 +56,8 @@ payload:
   # > Umeng
   - DOMAIN,msg.umeng.com
   - DOMAIN,msg.umengcloud.com
+  # 沃尔玛
+  - DOMAIN-SUFFIX,ghsmpwalmart.cn
   # 鸣潮
   - DOMAIN-SUFFIX,kurogames.com
   - DOMAIN-SUFFIX,kurogame.xyz
