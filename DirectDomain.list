@@ -55,6 +55,11 @@ DOMAIN,analytics.strava.com
 # > Umeng
 DOMAIN,msg.umeng.com
 DOMAIN,msg.umengcloud.com
+# 拼多多
+DOMAIN-SUFFIX,pinduoduo.net
+DOMAIN-SUFFIX,pddpic.com
+# 小宇宙
+DOMAIN-SUFFIX,xyzcdn.net
 # 小红书CDN
 DOMAIN-SUFFIX,xinqiucc.com
 DOMAIN-SUFFIX,tianwenca.com
