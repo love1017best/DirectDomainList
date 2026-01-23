@@ -29,6 +29,8 @@ payload:
   - DOMAIN-SUFFIX,hibianli.com
   - DOMAIN-SUFFIX,shujupie.com
   - DOMAIN-SUFFIX,baihemob.com
+  # 明日方舟终末地
+  - DOMAIN-SUFFIX,hypergryph.com
   # > General
   - DOMAIN,app.adjust.com
   - DOMAIN,app.appsflyer.com
