@@ -29,6 +29,13 @@ payload:
   - DOMAIN-SUFFIX,hibianli.com
   - DOMAIN-SUFFIX,shujupie.com
   - DOMAIN-SUFFIX,baihemob.com
+  # 及刻
+  - DOMAIN-SUFFIX,clickwifi.net
+  - DOMAIN-SUFFIX,isjike.com
+  # 菜鸟
+  - DOMAIN-SUFFIX,cainiao.com
+  # 火山SDK
+  - DOMAIN-SUFFIX,volces.com
   # 盖世小鸡
   - DOMAIN-SUFFIX,xiaoji.com
   # 华住会
