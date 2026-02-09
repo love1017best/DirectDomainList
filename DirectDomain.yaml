@@ -88,7 +88,8 @@ payload:
   - DOMAIN-SUFFIX,kurogames.com
   - DOMAIN-SUFFIX,kurogame.com
   - DOMAIN-SUFFIX,kurogame.xyz
-  - DOMAIN-SUFFIX,agi-game.com
+  - DOMAIN-SUFFIX,aki-game.com
+  - DOMAIN-SUFFIX,aki-game2.com
   # 云南农信
   - DOMAIN-SUFFIX,ynrcc.com
   # FF14
