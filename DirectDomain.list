@@ -317,3 +317,5 @@ DOMAIN-SUFFIX,aihubmix.com
 # 路过图床
 DOMAIN-SUFFIX,ax1x.com
 DOMAIN-SUFFIX,imgse.com
+# 飞书
+DOMAIN-SUFFIX,feishucdn.com
