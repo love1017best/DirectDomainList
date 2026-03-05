@@ -319,4 +319,5 @@ DOMAIN-SUFFIX,ax1x.com
 DOMAIN-SUFFIX,imgse.com
 # 飞书
 DOMAIN-SUFFIX,feishucdn.com
-DOMAIN-SUFFIX,xybsyw.com  # 校友邦
+# 校友邦
+DOMAIN-SUFFIX,xybsyw.com
