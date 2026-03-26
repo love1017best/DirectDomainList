@@ -326,3 +326,4 @@ payload:
   - DOMAIN-SUFFIX,dji.com
   # 抖音商城
   - DOMAIN-SUFFIX,bytegecko.com
+  - DOMAIN-SUFFIX,ecombdimg.com
