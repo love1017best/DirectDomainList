@@ -328,3 +328,5 @@ payload:
   - DOMAIN-SUFFIX,bytegecko.com
   - DOMAIN-SUFFIX,ecombdimg.com
   - DOMAIN-SUFFIX,ecombdapi.com
+  # Kimi
+  - DOMAIN-SUFFIX,kimi.com
