@@ -342,3 +342,5 @@ payload:
   # 加油彩云南
   - DOMAIN-SUFFIX,deepermobile.com
   - DOMAIN-SUFFIX,95504.net
+  # 浦源
+  - DOMAIN-SUFFIX,openxlab.org.cn
