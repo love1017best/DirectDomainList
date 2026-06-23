@@ -344,3 +344,6 @@ payload:
   - DOMAIN-SUFFIX,95504.net
   # 浦源
   - DOMAIN-SUFFIX,openxlab.org.cn
+  # KiviCube
+  - DOMAIN-SUFFIX,kivicube.com
+  - DOMAIN-SUFFIX,kivisense.com
