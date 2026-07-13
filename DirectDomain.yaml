@@ -359,3 +359,5 @@ payload:
   - DOMAIN-SUFFIX,zuchecdn.com
   # 蔚来
   - DOMAIN-SUFFIX,nio.com
+  # 途家民宿
+  - DOMAIN-SUFFIX,tujia.com
