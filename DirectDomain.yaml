@@ -363,3 +363,5 @@ payload:
   - DOMAIN-SUFFIX,tujia.com
   # 山西博物院
   - DOMAIN-SUFFIX,hdwbcloud.com
+  # 太原地铁
+  - DOMAIN-SUFFIX,tymetro.ltd
