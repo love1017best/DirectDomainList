@@ -374,3 +374,5 @@ DOMAIN-SUFFIX,leapmotor.com
 DOMAIN-SUFFIX,saicmg.com
 # 上汽大众
 DOMAIN-SUFFIX,svw-volkswagen.com
+# OpenMAIC
+DOMAIN-SUFFIX,maic.chat
