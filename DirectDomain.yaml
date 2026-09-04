@@ -1,4 +1,5 @@
 payload:
+  # 待确认归属（未分类）
   - DOMAIN-SUFFIX,mixcapp.com
   - DOMAIN-SUFFIX,wxgateway.com
   - DOMAIN-SUFFIX,vodplayvideo.net
