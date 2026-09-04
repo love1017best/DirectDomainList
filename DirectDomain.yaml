@@ -11,7 +11,6 @@ payload:
   - DOMAIN-SUFFIX,hgobox.com
   - DOMAIN-SUFFIX,amo9.com
   - DOMAIN-SUFFIX,qtck.work
-  - DOMAIN-SUFFIX,volccdn.com
   - DOMAIN-SUFFIX,little-origin.com
   - DOMAIN-SUFFIX,hibianli.com
   - DOMAIN-SUFFIX,shujupie.com
@@ -69,8 +68,10 @@ payload:
   - DOMAIN,log.mmstat.com
   - DOMAIN,sycm.mmstat.com
   # > Google
-  - DOMAIN-SUFFIX,blog.google // Google Blog
-  - DOMAIN-SUFFIX,googletraveladservices.com // Google Flights
+  # Google Blog
+  - DOMAIN-SUFFIX,blog.google
+  # Google Flights
+  - DOMAIN-SUFFIX,googletraveladservices.com
   - DOMAIN,clientservices.googleapis.com
   - DOMAIN,dl.google.com
   - DOMAIN,dl.l.google.com
@@ -172,6 +173,7 @@ payload:
   - DOMAIN-SUFFIX,rousi.zip
   # 火山引擎
   - DOMAIN-SUFFIX,volcengine.com
+  - DOMAIN-SUFFIX,volccdn.com
   # DeepSeek
   - DOMAIN-SUFFIX,deepseek.com
   # 通义千问
