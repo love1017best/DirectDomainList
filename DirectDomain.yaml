@@ -1,32 +1,46 @@
 payload:
-  - DOMAIN-SUFFIX,ynhdkc.com
-  - DOMAIN-SUFFIX,daxiang91.com
-  - DOMAIN-SUFFIX,quanxinfu.com
-  - DOMAIN-SUFFIX,mallcoo.net
   - DOMAIN-SUFFIX,mixcapp.com
   - DOMAIN-SUFFIX,wxgateway.com
-  - DOMAIN-SUFFIX,4pyun.com
-  - DOMAIN-SUFFIX,icc.link
   - DOMAIN-SUFFIX,vodplayvideo.net
-  - DOMAIN-SUFFIX,vod-qcloud.com
   - DOMAIN-SUFFIX,gcloudgbs.com
-  - DOMAIN-SUFFIX,yndaily.com
   - DOMAIN-SUFFIX,yhb2024.com
   - DOMAIN-SUFFIX,feiniaowangluo.com
-  - DOMAIN-SUFFIX,gameley.com
   - DOMAIN-SUFFIX,vgjump.com
-  - DOMAIN-SUFFIX,myhuaweicloud.com
   - DOMAIN-SUFFIX,hualala.com
   - DOMAIN-SUFFIX,hgobox.com
   - DOMAIN-SUFFIX,amo9.com
-  - DOMAIN-SUFFIX,fuioupay.com
   - DOMAIN-SUFFIX,qtck.work
-  - DOMAIN-SUFFIX,zztfly.com
   - DOMAIN-SUFFIX,volccdn.com
   - DOMAIN-SUFFIX,little-origin.com
-  - DOMAIN-SUFFIX,icostapp.com
   - DOMAIN-SUFFIX,hibianli.com
   - DOMAIN-SUFFIX,shujupie.com
+  # 滇医通
+  - DOMAIN-SUFFIX,ynhdkc.com
+  # 大象就医
+  - DOMAIN-SUFFIX,daxiang91.com
+  # 全芯福
+  - DOMAIN-SUFFIX,quanxinfu.com
+  # 猫酷
+  - DOMAIN-SUFFIX,mallcoo.net
+  # P云停车
+  - DOMAIN-SUFFIX,4pyun.com
+  # iCC Grow
+  - DOMAIN-SUFFIX,icc.link
+  # 腾讯云点播
+  - DOMAIN-SUFFIX,vod-qcloud.com
+  # 云南日报
+  - DOMAIN-SUFFIX,yndaily.com
+  # 华夏乐游
+  - DOMAIN-SUFFIX,gameley.com
+  # 华为云
+  - DOMAIN-SUFFIX,myhuaweicloud.com
+  # 富友支付
+  - DOMAIN-SUFFIX,fuioupay.com
+  # 掌之淘
+  - DOMAIN-SUFFIX,zztfly.com
+  # iCost记账
+  - DOMAIN-SUFFIX,icostapp.com
+  # 白盒流量
   - DOMAIN-SUFFIX,baihemob.com
   # Alma
   - DOMAIN-SUFFIX,alma.now
