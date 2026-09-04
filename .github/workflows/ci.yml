@@ -20,17 +20,20 @@ jobs:
         run: pip install pyyaml
 
       - name: Check for duplicate / invalid rules
+        shell: bash
         run: |
-          set -e
-          # Duplicate check (lines are NOT expected to duplicate)
-          dups=$(grep -oE "^DOMAIN[^,]+,[^ ]+" DirectDomain.list | sort | uniq -d)
+          # Duplicate check. NOTE: avoid `set -e` around $(...) pipelines whose
+          # tools (e.g. `uniq -d`) return nonzero when NO duplicates exist —
+          # that would wrongly fail the healthy (no-duplicate) case.
+          dups=$(grep -oE "^DOMAIN[^,]+,[^ ]+" DirectDomain.list | sort | uniq -d || true)
           if [ -n "$dups" ]; then
             echo "::error:: Duplicate rules found:"; echo "$dups"; exit 1
           fi
           echo "No duplicate rules."
 
-          # Format sanity: every non-empty/non-comment line must start with a known rule keyword
-          bad=$(grep -vE '^(#|$|DOMAIN-SUFFIX|DOMAIN-KEYWORD|DOMAIN,|DOMAIN,|USER-AGENT|IP-CIDR|IP-CIDR6|GEOIP|DST-PORT|PROCESS-NAME|RULE-SET|AND,|OR,)' DirectDomain.list)
+          # Format sanity: every non-empty/non-comment line must start with a known rule keyword.
+          # grep -v success (found offending lines) also yields exit 1 — capture with `|| true`.
+          bad=$(grep -vE '^(#|$|DOMAIN-SUFFIX|DOMAIN-KEYWORD|DOMAIN,|USER-AGENT|IP-CIDR|IP-CIDR6|GEOIP|DST-PORT|PROCESS-NAME|RULE-SET|AND,|OR,)' DirectDomain.list || true)
           if [ -n "$bad" ]; then
             echo "::error:: Lines with unknown/unsupported rule format:"; echo "$bad"; exit 1
           fi
