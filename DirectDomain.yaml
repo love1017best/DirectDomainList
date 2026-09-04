@@ -51,8 +51,6 @@ payload:
   - DOMAIN-SUFFIX,isjike.com
   # 菜鸟
   - DOMAIN-SUFFIX,cainiao.com
-  # 火山SDK
-  - DOMAIN-SUFFIX,volces.com
   # 盖世小鸡
   - DOMAIN-SUFFIX,xiaoji.com
   # 华住会
@@ -171,9 +169,10 @@ payload:
   - DOMAIN-SUFFIX,easyscholar.cc
   # RousiPT
   - DOMAIN-SUFFIX,rousi.zip
-  # 火山引擎
+  # 火山
   - DOMAIN-SUFFIX,volcengine.com
   - DOMAIN-SUFFIX,volccdn.com
+  - DOMAIN-SUFFIX,volces.com
   # DeepSeek
   - DOMAIN-SUFFIX,deepseek.com
   # 通义千问
