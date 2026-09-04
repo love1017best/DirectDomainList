@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install pyyaml
+
+      - name: Check for duplicate / invalid rules
+        run: |
+          set -e
+          # Duplicate check (lines are NOT expected to duplicate)
+          dups=$(grep -oE "^DOMAIN[^,]+,[^ ]+" DirectDomain.list | sort | uniq -d)
+          if [ -n "$dups" ]; then
+            echo "::error:: Duplicate rules found:"; echo "$dups"; exit 1
+          fi
+          echo "No duplicate rules."
+
+          # Format sanity: every non-empty/non-comment line must start with a known rule keyword
+          bad=$(grep -vE '^(#|$|DOMAIN-SUFFIX|DOMAIN-KEYWORD|DOMAIN,|DOMAIN,|USER-AGENT|IP-CIDR|IP-CIDR6|GEOIP|DST-PORT|PROCESS-NAME|RULE-SET|AND,|OR,)' DirectDomain.list)
+          if [ -n "$bad" ]; then
+            echo "::error:: Lines with unknown/unsupported rule format:"; echo "$bad"; exit 1
+          fi
+          echo "Rule formats valid."
+
+      - name: Verify DirectDomain.yaml is valid & in sync
+        run: |
+          python3 - <<'EOF'
+          import sys, yaml, subprocess
+          # 1) generated yaml must parse & payload must be a list
+          d = yaml.safe_load(open('DirectDomain.yaml'))
+          assert isinstance(d.get('payload'), list), "payload must be a list"
+          # 2) regenerate and compare to committed yaml
+          subprocess.run(["python3","convert_list_to_yaml.py","DirectDomain.list","/tmp/_chk.yaml"], check=True)
+          committed = open('DirectDomain.yaml',encoding='utf-8').read()
+          fresh = open('/tmp/_chk.yaml',encoding='utf-8').read()
+          if committed != fresh:
+              print("::error:: DirectDomain.yaml is out of sync with DirectDomain.list. Run: python3 convert_list_to_yaml.py DirectDomain.list DirectDomain.yaml")
+              sys.exit(1)
+          print("OK: DirectDomain.yaml is valid and in sync with DirectDomain.list")
+          EOF
