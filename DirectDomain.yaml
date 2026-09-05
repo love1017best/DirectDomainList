@@ -396,3 +396,5 @@ payload:
   # 安居客
   - DOMAIN-SUFFIX,ajkimg.com
   - DOMAIN-SUFFIX,anjukestatic.com
+  # 图播
+  - DOMAIN-SUFFIX,tubo.pw
