@@ -398,3 +398,5 @@ payload:
   - DOMAIN-SUFFIX,anjukestatic.com
   # 图播
   - DOMAIN-SUFFIX,tubo.pw
+  # 笑容加
+  - DOMAIN-SUFFIX,myusmile.online
