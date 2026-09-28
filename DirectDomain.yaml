@@ -403,3 +403,5 @@ payload:
   - DOMAIN-SUFFIX,myusmile.online
   # 光大银行
   - DOMAIN-SUFFIX,cebbank.com
+  # 可灵 AI
+  - DOMAIN-SUFFIX,kelingai.com
