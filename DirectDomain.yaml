@@ -148,6 +148,7 @@ payload:
   - DOMAIN-SUFFIX,jianying.com
   - DOMAIN-SUFFIX,faceu.mobi
   - DOMAIN-SUFFIX,vlabvod.com
+  - DOMAIN-SUFFIX,vlabstatic.com
   # 希沃
   - DOMAIN-SUFFIX,seewo.com
   # 易车
