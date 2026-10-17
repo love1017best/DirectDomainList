@@ -410,3 +410,6 @@ payload:
   - DOMAIN-SUFFIX,300hu.com
   - DOMAIN-SUFFIX,xiaoliebian.com
   - DOMAIN-SUFFIX,wxstratos.com
+  # 美的美居
+  - DOMAIN-SUFFIX,midea.com
+  - DOMAIN-SUFFIX,smartmidea.net
