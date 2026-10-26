@@ -415,6 +415,7 @@ payload:
   - DOMAIN-SUFFIX,smartmidea.net
   # 海绵音乐
   - DOMAIN-SUFFIX,haimian.com
+  - DOMAIN-SUFFIX,douyuedui.com
   # 标贝悦读
   - DOMAIN-SUFFIX,data-baker.com
   # 千问
