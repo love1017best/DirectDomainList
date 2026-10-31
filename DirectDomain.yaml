@@ -428,3 +428,5 @@ payload:
   - DOMAIN-SUFFIX,dxmjinr.com
   # 泥靴
   - DOMAIN-SUFFIX,wuuxiang.com
+  # 京东
+  - DOMAIN-SUFFIX,jddebug.com
