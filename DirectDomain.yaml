@@ -225,8 +225,14 @@ payload:
   - DOMAIN-SUFFIX,shouqianba.com
   # 小红书
   - DOMAIN-SUFFIX,xhslink.com
+  # 京东
+  - DOMAIN-SUFFIX,jddebug.com
   # 京东服务
   - DOMAIN-SUFFIX,jdcloud-oss.com
+  # 京东养车
+  - DOMAIN-SUFFIX,300hu.com
+  - DOMAIN-SUFFIX,xiaoliebian.com
+  - DOMAIN-SUFFIX,wxstratos.com
   # 海尔
   - DOMAIN-SUFFIX,haier.net
   - DOMAIN-SUFFIX,haiershui.com
@@ -406,10 +412,6 @@ payload:
   - DOMAIN-SUFFIX,cebbank.com
   # 可灵 AI
   - DOMAIN-SUFFIX,kelingai.com
-  # 京东养车
-  - DOMAIN-SUFFIX,300hu.com
-  - DOMAIN-SUFFIX,xiaoliebian.com
-  - DOMAIN-SUFFIX,wxstratos.com
   # 美的美居
   - DOMAIN-SUFFIX,midea.com
   - DOMAIN-SUFFIX,smartmidea.net
@@ -428,5 +430,3 @@ payload:
   - DOMAIN-SUFFIX,dxmjinr.com
   # 泥靴
   - DOMAIN-SUFFIX,wuuxiang.com
-  # 京东
-  - DOMAIN-SUFFIX,jddebug.com
