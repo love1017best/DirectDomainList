@@ -175,6 +175,7 @@ payload:
   - DOMAIN-SUFFIX,volcengine.com
   - DOMAIN-SUFFIX,volccdn.com
   - DOMAIN-SUFFIX,volces.com
+  - DOMAIN-SUFFIX,volcvod.com
   # DeepSeek
   - DOMAIN-SUFFIX,deepseek.com
   # 通义千问
