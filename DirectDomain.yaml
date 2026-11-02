@@ -150,6 +150,8 @@ payload:
   - DOMAIN-SUFFIX,faceu.mobi
   - DOMAIN-SUFFIX,vlabvod.com
   - DOMAIN-SUFFIX,vlabstatic.com
+  - DOMAIN-SUFFIX,bytecdn.com
+  - DOMAIN-SUFFIX,ulikecam.com
   # 希沃
   - DOMAIN-SUFFIX,seewo.com
   # 易车
