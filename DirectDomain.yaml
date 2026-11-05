@@ -440,3 +440,5 @@ payload:
   - DOMAIN-SUFFIX,telefen.com
   # 101
   - DOMAIN-SUFFIX,101.com
+  # 7-11
+  - DOMAIN-SUFFIX,miyapay.com
