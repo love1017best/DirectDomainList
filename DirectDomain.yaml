@@ -442,3 +442,5 @@ payload:
   - DOMAIN-SUFFIX,101.com
   # 7-11
   - DOMAIN-SUFFIX,miyapay.com
+  # 小黑盒
+  - DOMAIN-SUFFIX,max-c.com
