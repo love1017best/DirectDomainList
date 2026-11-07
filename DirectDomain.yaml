@@ -444,3 +444,6 @@ payload:
   - DOMAIN-SUFFIX,miyapay.com
   # 小黑盒
   - DOMAIN-SUFFIX,max-c.com
+  # JUMP App
+  - DOMAIN-SUFFIX,jumpvg.com
+  - DOMAIN-SUFFIX,qiniup.com
