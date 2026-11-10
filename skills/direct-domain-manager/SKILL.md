@@ -6,6 +6,7 @@ description: Manage DirectDomainList repository for proxy rules. Use when user w
 # Direct Domain Manager
 
 Manage the DirectDomainList repository (`DirectDomain.list` source + generated `DirectDomain.yaml`) for Clash/Mihomo/Surge proxy rules.
+Several agents / devices edit this repo independently, so the workflow below is built to avoid conflicts. See also `AGENTS.md` at the repo root.
 
 ## Repository Requirements
 
@@ -14,7 +15,9 @@ Manage the DirectDomainList repository (`DirectDomain.list` source + generated `
 github.com:love1017best/DirectDomainList.git
 ```
 
-Verify with `git remote -v`. If the remote URL doesn't match, ask the user for confirmation before proceeding.
+Verify with `git remote -v`. If the remote URL doesn't match, ask the user for confirmation before proceeding. (`add_domain.sh` refuses automatically.)
+
+Find the repository: check the working dir first (e.g. `/var/minis/workspace/DirectDomainList`).
 
 ## Supported Operations
 
@@ -27,8 +30,19 @@ When user says things like:
 - "DOMAIN-SUFFIX,xxx"
 - "under the <comment> section add xxx"
 
-**Comment Format (IMPORTANT):**
-A comment (中文分类名 like 飞书 / 校友邦 / 抖音商城 or a brand name) must be on its own line **ABOVE** the domain rule(s):
+**Use the script. It is the standard path** (deterministic; do not re-implement its steps by hand unless it cannot run):
+
+```bash
+bash add_domain.sh -c <category> <domain> [<domain> ...]
+```
+
+- Without `-c`, domains go to the "待确认归属" group at the top.
+- `-t TYPE` changes the rule type (default `DOMAIN-SUFFIX`). `--no-push` commits without pushing.
+- It does, in order: verify remote → require a clean tree → fetch + `rebase origin/main` (stops if the fetch fails, never edits stale data) → duplicate check → insert under the category → regenerate YAML → `check.sh` → commit (`Add <domain> (<category>) to direct list`) → `git push origin HEAD:main`.
+- If the push is rejected (remote moved), it drops its own commit, re-syncs, re-applies and pushes again (up to 5 attempts). If the remote is unreachable it stops and says the commit is local only.
+- Exit codes: `0` ok · `1` error · `3` domain already exists (tell the user where) · `4` category name is similar to existing ones (reuse one with `-c`, or confirm with the user and pass `--new-category`).
+
+**Category naming:** before creating a category, check existing ones (`grep '^# ' DirectDomain.list`) and reuse when possible (avoid "京东" vs "京东服务" style near-duplicates). A category is a comment on its own line **ABOVE** its domain rule(s):
 
 ✅ **正确格式**:
 ```
@@ -41,63 +55,51 @@ DOMAIN-SUFFIX,xybsyw.com
 DOMAIN-SUFFIX,xybsyw.com  # 校友邦
 ```
 
-To group a new domain under an existing comment section, insert the new `DOMAIN-SUFFIX,<domain>` line directly beneath that category's comment.
+**Expected, not a bug:** all new domains land at the same spot (end of a group), so two agents adding at about the same time produce a textual conflict. Resolution = keep both sides' additions, regenerate the YAML. The script does this automatically.
 
-**Steps (must ALL be completed):**
-1. Parse the domain and optional comment/category from the user's request
-2. Find the DirectDomainList repository (check working dir first: `/var/minis/workspace/DirectDomainList`)
-3. Verify it's the correct repository by checking `git remote -v`
-4. **Sync remote BEFORE touching any file** (mandatory — prevents conflicts with edits made on other devices):
-   ```bash
-   git pull origin main
-   ```
-   - Retry a couple times if it fails (e.g. SSH `Connection closed by ... port 22` / network issue).
-   - If the working tree has uncommitted changes, commit (or stash) them first, then pull.
-   - If branches have diverged, use `git pull --no-rebase origin main` and resolve any conflicts before continuing.
-   - If the pull fails after retries, STOP. Do not edit on top of stale data; tell the user.
-   - On a worktree / non-`main` branch (where `main` is checked out elsewhere): `git fetch origin && git rebase origin/main` (or `git merge --ff-only origin/main`) instead of `git pull origin main`.
-5. **Duplicate check BEFORE adding** (git cannot detect semantic duplicates; CI will fail on them):
-   ```bash
-   grep -nE '^DOMAIN[^,]*,<domain>([^A-Za-z0-9.-]|$)' DirectDomain.list
-   ```
-   If the domain already exists (under any category), do not add it again; tell the user where it is.
-6. **If there is a comment**: add the comment line first (if not already present), then add `DOMAIN-SUFFIX,<domain>` on the next line
-7. Run the conversion script:
-   ```bash
-   python3 convert_list_to_yaml.py DirectDomain.list DirectDomain.yaml
-   ```
-8. **Git add**: `git add DirectDomain.list DirectDomain.yaml`
-9. **Git commit**: `git commit -m "Add <domain> (<comment>) to direct list"`
-10. **Git push**: `git push origin main` (on a worktree / non-`main` branch: `git push origin HEAD:main`). If rejected (non-fast-forward), do NOT just retry — follow "Conflict Handling" below.
-11. **Verify push**: run `git status` (clean working tree) and `git log --oneline -1` (shows the latest commit). If push fails (e.g. SSH `Connection closed by ... port 22` or network issue), retry a couple times; if still failing, tell the user it's committed locally but not yet pushed, and offer to retry later.
+#### Manual fallback (only if the script cannot run)
 
-**⚠️ 重要**: Always sync BEFORE editing (step 4), and run steps 8–10 together — never modify the files without committing and pushing.
+1. `git fetch origin && git rebase origin/main` (retry a couple of times; if it keeps failing, STOP and tell the user). Commit/stash local changes first.
+2. Duplicate check: `grep -nE '^DOMAIN[^,]*,<domain>([^A-Za-z0-9.-]|$)' DirectDomain.list`; if present, don't add it again.
+3. Add the category comment (if new) and `DOMAIN-SUFFIX,<domain>` beneath it.
+4. `python3 convert_list_to_yaml.py DirectDomain.list DirectDomain.yaml`, then `bash check.sh`.
+5. `git add DirectDomain.list DirectDomain.yaml && git commit -m "Add <domain> (<category>) to direct list"`
+6. `git push origin HEAD:main`, then verify with `git status` and `git log --oneline -1`.
 
-### Conflict Handling (push rejected / merge conflicts)
+Never modify the files without committing and pushing (unpushed commits are lost when a worktree is recycled).
 
-A push rejected as non-fast-forward means another device pushed after your sync. It is NOT a network error; retrying the same push will never succeed.
+### Conflict Handling (manual flow: push rejected / merge conflicts)
 
-1. `git pull --rebase origin main` (worktree / non-`main` branch: `git fetch origin && git rebase origin/main`).
-2. If `DirectDomain.list` conflicts: resolve it by keeping BOTH sides' added domains, in the correct category sections (comment line above its domains). Re-run the duplicate check from step 5 on the merged result.
+A push rejected as non-fast-forward means another device pushed after your sync. It is NOT a network error; retrying the same push never succeeds.
+
+1. `git fetch origin && git rebase origin/main` (always rebase; do not create merge commits).
+2. If `DirectDomain.list` conflicts: keep BOTH sides' added domains, each in the correct category section (comment line above its domains). Re-run the duplicate check on the merged result.
 3. **`DirectDomain.yaml` conflicts: NEVER hand-merge, and never just pick one side.** Resolve the `.list` first, then regenerate:
    ```bash
    python3 convert_list_to_yaml.py DirectDomain.list DirectDomain.yaml
    git add DirectDomain.list DirectDomain.yaml
    git rebase --continue
    ```
-4. Push again (step 10). If it is rejected again, repeat from 1.
+4. `bash check.sh`, then push again. If rejected again, repeat from 1.
 5. If anything is unclear (e.g. same domain filed under different categories on both sides), ask the user instead of guessing.
 
 ### 2. Convert List to YAML
 
-Run manually when needed:
 ```bash
 python3 convert_list_to_yaml.py DirectDomain.list DirectDomain.yaml
 ```
 
-Optional full build (use after bulk edits or conflict resolution): `./build.sh` (or `bash build.sh`) runs `preprocess_list.py` and then the conversion above. The preprocessor auto-removes duplicates **within the same category group** in place (backup `DirectDomain.list.bak` is gitignored), validates rule types, and **fails (without modifying the file) if the same rule appears under more than one category**, listing the groups involved. Decide which category keeps it, delete the other, and re-run. This matches the CI duplicate check.
+Optional full build (use after bulk edits or conflict resolution): `bash build.sh` runs `preprocess_list.py` and then the conversion above. The preprocessor auto-removes duplicates **within the same category group** in place (backup `DirectDomain.list.bak` is gitignored), validates rule types, and **fails (without modifying the file) if the same rule appears under more than one category**, listing the groups involved. Decide which category keeps it, delete the other, and re-run.
 
-### 3. View Current List
+### 3. Check
+
+```bash
+bash check.sh
+```
+
+Duplicates (global), rule format, YAML in sync with the list (+ YAML parse if PyYAML is installed). CI runs exactly this script, so run it before every push.
+
+### 4. View Current List
 
 Read `DirectDomain.list` to show current domains grouped by category comments.
 
@@ -107,9 +109,12 @@ Read `DirectDomain.list` to show current domains grouped by category comments.
 DirectDomainList/
 ├── DirectDomain.list                    # Source list file (edit this)
 ├── DirectDomain.yaml                    # Generated YAML for Clash/Mihomo (do not edit by hand)
+├── add_domain.sh                        # Standard way to add domains (sync, dedupe, insert, convert, check, commit, push w/ retry)
+├── check.sh                             # Duplicate / format / YAML-sync checks; shared by CI and local use
 ├── convert_list_to_yaml.py              # Conversion script (run from repo root)
 ├── preprocess_list.py                   # Dedup + rule-format validation; called by build.sh
-├── build.sh                             # Optional full build: preprocess + convert (equivalent output to step 7 when the list is clean)
+├── build.sh                             # Optional full build: preprocess + convert
+├── AGENTS.md / CLAUDE.md                # Short rules for agents (CLAUDE.md just imports AGENTS.md)
 └── skills/direct-domain-manager/
     └── SKILL.md                         # This skill definition
 ```
@@ -118,7 +123,7 @@ DirectDomainList/
 
 Always verify:
 1. Correct repository (`git remote -v` matches DirectDomainList)
-2. **Remote synced first**: `git pull origin main` completed before any file modification (prevents cross-device conflicts)
-3. File exists before modification
-4. Git status is clean or handle pending changes accordingly
+2. **Remote synced first** (`git fetch` + `rebase origin/main` succeeded) before any file modification; if it fails, stop
+3. Clean working tree before starting
+4. `bash check.sh` passes before pushing
 5. Ask user for confirmation if anything is uncertain
