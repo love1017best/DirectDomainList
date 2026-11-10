@@ -54,17 +54,39 @@ To group a new domain under an existing comment section, insert the new `DOMAIN-
    - Retry a couple times if it fails (e.g. SSH `Connection closed by ... port 22` / network issue).
    - If the working tree has uncommitted changes, commit (or stash) them first, then pull.
    - If branches have diverged, use `git pull --no-rebase origin main` and resolve any conflicts before continuing.
-5. **If there is a comment**: add the comment line first (if not already present), then add `DOMAIN-SUFFIX,<domain>` on the next line
-6. Run the conversion script:
+   - If the pull fails after retries, STOP. Do not edit on top of stale data; tell the user.
+   - On a worktree / non-`main` branch (where `main` is checked out elsewhere): `git fetch origin && git rebase origin/main` (or `git merge --ff-only origin/main`) instead of `git pull origin main`.
+5. **Duplicate check BEFORE adding** (git cannot detect semantic duplicates; CI will fail on them):
+   ```bash
+   grep -nE '^DOMAIN[^,]*,<domain>([^A-Za-z0-9.-]|$)' DirectDomain.list
+   ```
+   If the domain already exists (under any category), do not add it again; tell the user where it is.
+6. **If there is a comment**: add the comment line first (if not already present), then add `DOMAIN-SUFFIX,<domain>` on the next line
+7. Run the conversion script:
    ```bash
    python3 convert_list_to_yaml.py DirectDomain.list DirectDomain.yaml
    ```
-7. **Git add**: `git add DirectDomain.list DirectDomain.yaml`
-8. **Git commit**: `git commit -m "Add <domain> (<comment>) to direct list"`
-9. **Git push**: `git push origin main`
-10. **Verify push**: run `git status` (clean working tree) and `git log --oneline -1` (shows the latest commit). If push fails (e.g. SSH `Connection closed by ... port 22` or network issue), retry a couple times; if still failing, tell the user it's committed locally but not yet pushed, and offer to retry later.
+8. **Git add**: `git add DirectDomain.list DirectDomain.yaml`
+9. **Git commit**: `git commit -m "Add <domain> (<comment>) to direct list"`
+10. **Git push**: `git push origin main` (on a worktree / non-`main` branch: `git push origin HEAD:main`). If rejected (non-fast-forward), do NOT just retry — follow "Conflict Handling" below.
+11. **Verify push**: run `git status` (clean working tree) and `git log --oneline -1` (shows the latest commit). If push fails (e.g. SSH `Connection closed by ... port 22` or network issue), retry a couple times; if still failing, tell the user it's committed locally but not yet pushed, and offer to retry later.
 
-**⚠️ 重要**: Always `git pull origin main` BEFORE editing (step 4), and run steps 7–9 together — never modify the files without committing and pushing.
+**⚠️ 重要**: Always sync BEFORE editing (step 4), and run steps 8–10 together — never modify the files without committing and pushing.
+
+### Conflict Handling (push rejected / merge conflicts)
+
+A push rejected as non-fast-forward means another device pushed after your sync. It is NOT a network error; retrying the same push will never succeed.
+
+1. `git pull --rebase origin main` (worktree / non-`main` branch: `git fetch origin && git rebase origin/main`).
+2. If `DirectDomain.list` conflicts: resolve it by keeping BOTH sides' added domains, in the correct category sections (comment line above its domains). Re-run the duplicate check from step 5 on the merged result.
+3. **`DirectDomain.yaml` conflicts: NEVER hand-merge, and never just pick one side.** Resolve the `.list` first, then regenerate:
+   ```bash
+   python3 convert_list_to_yaml.py DirectDomain.list DirectDomain.yaml
+   git add DirectDomain.list DirectDomain.yaml
+   git rebase --continue
+   ```
+4. Push again (step 10). If it is rejected again, repeat from 1.
+5. If anything is unclear (e.g. same domain filed under different categories on both sides), ask the user instead of guessing.
 
 ### 2. Convert List to YAML
 

@@ -49,6 +49,15 @@ DOMAIN-SUFFIX,ecombdimg.com
 git pull origin main
 ```
 本地如有未提交改动，先提交/暂存再拉取；若分支分叉用 `git pull --no-rebase origin main` 解决冲突。
+拉取失败时不要在旧数据上继续改。在 worktree / 非 `main` 分支上改用 `git fetch origin && git rebase origin/main`，推送用 `git push origin HEAD:main`。
+
+添加前先 `grep` 确认域名不存在（同一域名放进不同分类，git 合并不报错，但 CI 重复检查会失败）。
+
+**push 被拒（non-fast-forward）不是网络问题**，说明别处已推送，重试无效，处理方式：
+1. `git pull --rebase origin main`
+2. `DirectDomain.list` 冲突：保留两边新增的域名，放回正确分类，再检查重复。
+3. **`DirectDomain.yaml` 冲突：不要手动合并，也不要只留一边**。先解决 `.list`，再用脚本重新生成并 `git add`，`git rebase --continue`。
+4. 重新 push；仍被拒就重复以上步骤。
 
 **1. 添加/修改域名后转 YAML：**
 ```bash
