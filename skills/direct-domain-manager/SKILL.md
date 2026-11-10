@@ -57,12 +57,19 @@ DOMAIN-SUFFIX,xybsyw.com  # 校友邦
 
 #### Choosing a category (when the user gives no comment)
 
-If the user just says "添加 xxx" without a comment/category, **do not default to the 待确认归属 group** — derive a meaningful one first:
+If the user just says "添加 xxx" without a comment/category, **do not default to the 待确认归属 group** — derive a meaningful one first. **Keep it fast: analysis must never delay the add itself — budget ≈ 10–15 s per domain, then stop and move on.**
 
-1. **Reuse an existing category** when the domain clearly belongs to one: `grep '^# ' DirectDomain.list` and compare with domains already filed there (brand/service match).
-2. Otherwise **infer the owner from the domain itself** (brand/service semantics), and when unsure **verify it**: fetch the homepage and read its `<title>` (e.g. `wget -qO- --timeout=6 --tries=1 http://<domain>`, try `https://` / `www.` variants too), or `whois <domain>` for registration info — same techniques as the screenshot flow.
-3. Add without `-c` (→ 待确认归属) **only when ownership genuinely cannot be established** (network-blocked AND no semantic clue AND no whois lead).
-4. Always tell the user which category you picked **and why**, so a wrong guess is easy to correct. If two categories are equally plausible, ask instead of guessing.
+1. **Reuse an existing category** (instant — always do this): `grep '^# ' DirectDomain.list` and compare with domains already filed there.
+2. **Semantic inference** from the domain (brand/service words or pinyin). If reasonably confident, use it directly and label it as *inferred* in your report.
+3. **At most ONE quick verification** (≈5–10 s): fetch the homepage `<title>` with short timeouts, e.g. `wget -qO- --timeout=5 --tries=1 http://<domain>` (also try `https://` once). Got a clear clue → done. No response → **stop probing immediately**.
+4. **Stop-loss — do NOT escalate**: no crt.sh / RDAP / WHOIS / search engines during routine adds (they are 30–60 s each or unusable behind proxies). Those are reserved for when the user explicitly asks for a deep analysis. If steps 1–3 yield nothing, add it without `-c` (→ 待确认归属) right away and continue.
+5. Always tell the user which category you picked **and why** (verified vs inferred). If two categories are equally plausible, ask instead of guessing.
+
+**Probing cheat-sheet (learned the hard way, shared across agents):**
+- ✅ Homepage `<title>` / meta fetch — fastest, most reliable signal (when the apex serves web)
+- ✅ Domain pinyin/brand semantics; existing categories via `grep '^# '`
+- ⚠️ Slow, deep analysis only on explicit user request: `crt.sh` CT subdomain lists (30–60 s but can be decisive — e.g. product subdomains revealed 哗啦啦/华润万象城)
+- ❌ Dead ends: DNS lookups behind proxies (fake-IPs like 198.18.x), search engines via curl/browser (CAPTCHA / garbage results), RDAP registrant org (almost always redacted)
 
 **Expected, not a bug:** all new domains land at the same spot (end of a group), so two agents adding at about the same time produce a textual conflict. Resolution = keep both sides' additions, regenerate the YAML. The script does this automatically.
 

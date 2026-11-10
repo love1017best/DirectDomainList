@@ -27,6 +27,16 @@ bash add_domain.sh -c 分类名 域名1 [域名2 ...]   # 不带 -c 则放入顶
 
 所有新域名都追加在同一处（「待确认归属」组末尾或某分类末尾），所以两个 agent 先后添加时，**文本冲突是预期行为**，不是异常。解决方式：保留两边新增的域名，再重新生成 yaml。使用 `add_domain.sh` 时这一步是自动的。
 
+## .git 损坏时
+
+沙盒文件系统（iSH 等）上偶发 `.git/objects` 目录损坏（`fsck` 报 missing object / `Not a directory`）。**不要尝试修复对象库**：本地永远没有远端没有的内容（规则1保证了改动都会及时推送），所以直接重来：
+
+```bash
+mv DirectDomainList DirectDomainList.broken   # 坏树的 readdir 可能异常，rm -rf 未必删得掉
+git clone git@github.com:love1017best/DirectDomainList.git
+```
+新克隆 `git fsck` 干净、`bash check.sh` 通过后再继续；损坏目录事后清理即可。
+
 ## 不适用
 
 本仓库没有版本号，全局约定里的 `vX.Y.Z` 规则在这里不适用。
