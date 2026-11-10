@@ -47,17 +47,24 @@ To group a new domain under an existing comment section, insert the new `DOMAIN-
 1. Parse the domain and optional comment/category from the user's request
 2. Find the DirectDomainList repository (check working dir first: `/var/minis/workspace/DirectDomainList`)
 3. Verify it's the correct repository by checking `git remote -v`
-4. **If there is a comment**: add the comment line first (if not already present), then add `DOMAIN-SUFFIX,<domain>` on the next line
-5. Run the conversion script:
+4. **Sync remote BEFORE touching any file** (mandatory — prevents conflicts with edits made on other devices):
+   ```bash
+   git pull origin main
+   ```
+   - Retry a couple times if it fails (e.g. SSH `Connection closed by ... port 22` / network issue).
+   - If the working tree has uncommitted changes, commit (or stash) them first, then pull.
+   - If branches have diverged, use `git pull --no-rebase origin main` and resolve any conflicts before continuing.
+5. **If there is a comment**: add the comment line first (if not already present), then add `DOMAIN-SUFFIX,<domain>` on the next line
+6. Run the conversion script:
    ```bash
    python3 convert_list_to_yaml.py DirectDomain.list DirectDomain.yaml
    ```
-6. **Git add**: `git add DirectDomain.list DirectDomain.yaml`
-7. **Git commit**: `git commit -m "Add <domain> (<comment>) to direct list"`
-8. **Git push**: `git push origin main`
-9. **Verify push**: run `git status` (clean working tree) and `git log --oneline -1` (shows the latest commit). If push fails (e.g. SSH `Connection closed by ... port 22` or network issue), retry a couple times; if still failing, tell the user it's committed locally but not yet pushed, and offer to retry later.
+7. **Git add**: `git add DirectDomain.list DirectDomain.yaml`
+8. **Git commit**: `git commit -m "Add <domain> (<comment>) to direct list"`
+9. **Git push**: `git push origin main`
+10. **Verify push**: run `git status` (clean working tree) and `git log --oneline -1` (shows the latest commit). If push fails (e.g. SSH `Connection closed by ... port 22` or network issue), retry a couple times; if still failing, tell the user it's committed locally but not yet pushed, and offer to retry later.
 
-**⚠️ 重要**: Steps 6–8 must run together — never modify the files without committing and pushing.
+**⚠️ 重要**: Always `git pull origin main` BEFORE editing (step 4), and run steps 7–9 together — never modify the files without committing and pushing.
 
 ### 2. Convert List to YAML
 
@@ -87,6 +94,7 @@ DirectDomainList/
 
 Always verify:
 1. Correct repository (`git remote -v` matches DirectDomainList)
-2. File exists before modification
-3. Git status is clean or handle pending changes accordingly
-4. Ask user for confirmation if anything is uncertain
+2. **Remote synced first**: `git pull origin main` completed before any file modification (prevents cross-device conflicts)
+3. File exists before modification
+4. Git status is clean or handle pending changes accordingly
+5. Ask user for confirmation if anything is uncertain

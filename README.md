@@ -44,6 +44,12 @@ DOMAIN-SUFFIX,ecombdimg.com
 
 ## 使用方式
 
+**0. 修改前先同步远端（防异地冲突）：**
+```bash
+git pull origin main
+```
+本地如有未提交改动，先提交/暂存再拉取；若分支分叉用 `git pull --no-rebase origin main` 解决冲突。
+
 **1. 添加/修改域名后转 YAML：**
 ```bash
 python3 convert_list_to_yaml.py DirectDomain.list DirectDomain.yaml
