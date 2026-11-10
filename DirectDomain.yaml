@@ -1,20 +1,14 @@
 payload:
   # 待确认归属（未分类）
-  - DOMAIN-SUFFIX,herocheer.com
-  - DOMAIN-SUFFIX,mixcapp.com
   - DOMAIN-SUFFIX,wxgateway.com
   - DOMAIN-SUFFIX,vodplayvideo.net
   - DOMAIN-SUFFIX,gcloudgbs.com
   - DOMAIN-SUFFIX,yhb2024.com
-  - DOMAIN-SUFFIX,feiniaowangluo.com
   - DOMAIN-SUFFIX,vgjump.com
-  - DOMAIN-SUFFIX,hualala.com
-  - DOMAIN-SUFFIX,hgobox.com
   - DOMAIN-SUFFIX,amo9.com
   - DOMAIN-SUFFIX,qtck.work
   - DOMAIN-SUFFIX,little-origin.com
   - DOMAIN-SUFFIX,hibianli.com
-  - DOMAIN-SUFFIX,shujupie.com
   # 滇医通
   - DOMAIN-SUFFIX,ynhdkc.com
   # 大象就医
@@ -450,3 +444,15 @@ payload:
   - DOMAIN-SUFFIX,jumpvg.com
   - DOMAIN-SUFFIX,qiniup.com
   - DOMAIN-SUFFIX,jump-game.com
+  # 熙重科技
+  - DOMAIN-SUFFIX,herocheer.com
+  # 哗啦啦
+  - DOMAIN-SUFFIX,hualala.com
+  # 华润万象城
+  - DOMAIN-SUFFIX,mixcapp.com
+  # 数据派
+  - DOMAIN-SUFFIX,shujupie.com
+  # 飞鸟网络
+  - DOMAIN-SUFFIX,feiniaowangluo.com
+  # 优品易柜
+  - DOMAIN-SUFFIX,hgobox.com
