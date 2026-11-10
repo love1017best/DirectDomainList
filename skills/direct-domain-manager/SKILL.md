@@ -36,7 +36,7 @@ When user says things like:
 bash add_domain.sh -c <category> <domain> [<domain> ...]
 ```
 
-- Without `-c`, domains go to the "待确认归属" group at the top.
+- **No category given → analyze first** (see *Choosing a category* below): only genuinely unidentifiable domains go to the "待确认归属" group at the top.
 - `-t TYPE` changes the rule type (default `DOMAIN-SUFFIX`). `--no-push` commits without pushing.
 - It does, in order: verify remote → require a clean tree → fetch + `rebase origin/main` (stops if the fetch fails, never edits stale data) → duplicate check → insert under the category → regenerate YAML → `check.sh` → commit (`Add <domain> (<category>) to direct list`) → `git push origin HEAD:main`.
 - If the push is rejected (remote moved), it drops its own commit, re-syncs, re-applies and pushes again (up to 5 attempts). If the remote is unreachable it stops and says the commit is local only.
@@ -54,6 +54,15 @@ DOMAIN-SUFFIX,xybsyw.com
 ```
 DOMAIN-SUFFIX,xybsyw.com  # 校友邦
 ```
+
+#### Choosing a category (when the user gives no comment)
+
+If the user just says "添加 xxx" without a comment/category, **do not default to the 待确认归属 group** — derive a meaningful one first:
+
+1. **Reuse an existing category** when the domain clearly belongs to one: `grep '^# ' DirectDomain.list` and compare with domains already filed there (brand/service match).
+2. Otherwise **infer the owner from the domain itself** (brand/service semantics), and when unsure **verify it**: fetch the homepage and read its `<title>` (e.g. `wget -qO- --timeout=6 --tries=1 http://<domain>`, try `https://` / `www.` variants too), or `whois <domain>` for registration info — same techniques as the screenshot flow.
+3. Add without `-c` (→ 待确认归属) **only when ownership genuinely cannot be established** (network-blocked AND no semantic clue AND no whois lead).
+4. Always tell the user which category you picked **and why**, so a wrong guess is easy to correct. If two categories are equally plausible, ask instead of guessing.
 
 **Expected, not a bug:** all new domains land at the same spot (end of a group), so two agents adding at about the same time produce a textual conflict. Resolution = keep both sides' additions, regenerate the YAML. The script does this automatically.
 
