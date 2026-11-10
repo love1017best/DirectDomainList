@@ -1,6 +1,6 @@
 ---
 name: direct-domain-manager
-description: Manage DirectDomainList repository for proxy rules. Use when user wants to add domains to direct connection list, convert list format, or commit changes. Triggers on phrases like "add domain", "直连列表", "添加域名", "DOMAIN-SUFFIX", or any domain management requests related to proxy rules.
+description: Manage DirectDomainList repository for proxy rules. Use when user wants to add domains to direct connection list, convert list format, or commit changes. Triggers on phrases like "add domain", "直连列表", "添加域名", "DOMAIN-SUFFIX", "Surge 临时规则", "截图识别域名", or any domain management requests related to proxy rules.
 ---
 
 # Direct Domain Manager
@@ -56,6 +56,16 @@ DOMAIN-SUFFIX,xybsyw.com  # 校友邦
 ```
 
 **Expected, not a bug:** all new domains land at the same spot (end of a group), so two agents adding at about the same time produce a textual conflict. Resolution = keep both sides' additions, regenerate the YAML. The script does this automatically.
+
+#### From a screenshot (Surge 临时规则)
+
+Instead of typing domains, the user may send a screenshot of Surge's temporary-rules page (临时规则). Then:
+
+1. Recognize every rule entry in the image: domain + rule type + the `Added for:` hint. The hint reveals the real service (e.g. `midea-images.mideav.com` → 美的美居, `cdn50.ehaier.com` → 海尔).
+2. Decide the category per domain: reuse the user's hint if given, otherwise infer from the `Added for:` hint and verify with `grep '^# ' DirectDomain.list`. No obvious match → ask the user, or add without `-c` (goes to the 待确认归属 group).
+3. Add all missing domains in one call: `bash add_domain.sh -c <category> <domain> [<domain> ...]` — pass `-t <TYPE>` when the screenshot's rule type is not `DOMAIN-SUFFIX`.
+4. The script output already distinguishes `ADDED` from `EXISTS` lines; relay both to the user (exit `3` = all existed, `4` = category ambiguous, as above). Duplicates are skipped automatically when mixed with new domains.
+5. If the screenshot text is hard to read, Minis agents may fall back to `apple-vision ocr <image-path> --lang zh-Hans`.
 
 #### Manual fallback (only if the script cannot run)
 

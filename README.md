@@ -93,3 +93,5 @@ bash check.sh
 ## AI / Skill 辅助维护
 
 根目录的 `AGENTS.md`（`CLAUDE.md` 引用它）给出 agent 必须遵守的硬规则；`skills/direct-domain-manager/SKILL.md` 供 AI Agent（如 Claude Code、Minis 等）识别该仓库用途并复用维护流程。两者与上文的"分类注释规范"一致。
+
+支持从 Surge「临时规则」截图识别域名并自动查重入库（见 SKILL.md 的 *From a screenshot* 一节），无需手动输入。
