@@ -95,7 +95,7 @@ Run manually when needed:
 python3 convert_list_to_yaml.py DirectDomain.list DirectDomain.yaml
 ```
 
-Optional full build (use after bulk edits or conflict resolution): `./build.sh` (or `bash build.sh`) runs `preprocess_list.py` (removes duplicates **within the same category group** in place, backup `DirectDomain.list.bak` is gitignored, and validates rule types) and then the conversion above. It does NOT catch the same domain appearing in different categories; use the step 5 `grep` check (CI enforces global uniqueness).
+Optional full build (use after bulk edits or conflict resolution): `./build.sh` (or `bash build.sh`) runs `preprocess_list.py` and then the conversion above. The preprocessor auto-removes duplicates **within the same category group** in place (backup `DirectDomain.list.bak` is gitignored), validates rule types, and **fails (without modifying the file) if the same rule appears under more than one category**, listing the groups involved. Decide which category keeps it, delete the other, and re-run. This matches the CI duplicate check.
 
 ### 3. View Current List
 
@@ -108,7 +108,7 @@ DirectDomainList/
 ├── DirectDomain.list                    # Source list file (edit this)
 ├── DirectDomain.yaml                    # Generated YAML for Clash/Mihomo (do not edit by hand)
 ├── convert_list_to_yaml.py              # Conversion script (run from repo root)
-├── preprocess_list.py                   # Dedup (within a category group) + rule-format validation; called by build.sh
+├── preprocess_list.py                   # Dedup + rule-format validation; called by build.sh
 ├── build.sh                             # Optional full build: preprocess + convert (equivalent output to step 7 when the list is clean)
 └── skills/direct-domain-manager/
     └── SKILL.md                         # This skill definition

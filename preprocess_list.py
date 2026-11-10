@@ -120,6 +120,28 @@ def deduplicate_rules(rules: List[Rule]) -> Tuple[List[Rule], Dict[str, int]]:
     return result, dict(duplicate_counts)
 
 
+def find_cross_group_duplicates(rules: List[Rule]) -> Dict[str, List[str]]:
+    """
+    Find rules that appear under more than one category group.
+    Not auto-removed: which group should keep the rule is a human decision.
+    The key matches CI's duplicate check (rule type + value up to first whitespace,
+    so a trailing `// comment` is ignored). Returns {key: [group comment, ...]}.
+    """
+    locations: Dict[str, List[str]] = defaultdict(list)
+    group = '(no group)'
+
+    for rule in rules:
+        if rule.is_empty:
+            continue
+        if rule.is_comment:
+            group = rule.raw.strip().lstrip('#').strip() or '(no group)'
+            continue
+        value = rule.value.split(None, 1)[0] if rule.value else ''
+        locations[f"{rule.type},{value}"].append(group)
+
+    return {k: v for k, v in locations.items() if len(v) > 1}
+
+
 def validate_all_rules(rules: List[Rule]) -> List[str]:
     """Validate all rules and return list of errors."""
     errors = []
@@ -127,6 +149,10 @@ def validate_all_rules(rules: List[Rule]) -> List[str]:
         is_valid, error_msg = validate_rule(rule, VALID_RULE_TYPES)
         if not is_valid:
             errors.append(error_msg)
+
+    for key, groups in sorted(find_cross_group_duplicates(rules).items()):
+        errors.append(f"Duplicate rule across groups: {key} (in: {' | '.join(groups)})")
+
     return errors
 
 
@@ -245,7 +271,7 @@ def process_file(
                 print("Validating rules...")
             validation_errors = validate_all_rules(rules)
             if validation_errors:
-                print(f"Error: Found {len(validation_errors)} invalid rules:")
+                print(f"Error: Found {len(validation_errors)} problem(s):")
                 for error in validation_errors:
                     print(f"  - {error}")
                 return False
