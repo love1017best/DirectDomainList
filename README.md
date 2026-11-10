@@ -9,8 +9,8 @@
 | `DirectDomain.list` | **源文件**，唯一需要手工编辑的文件 |
 | `DirectDomain.yaml` | 生成的 Clash/Mihomo 格式订阅规则（**勿手改**，由脚本生成） |
 | `convert_list_to_yaml.py` | 列表 → YAML 转换脚本 |
-| `preprocess_list.py` | 去重 / 校验脚本（build 时调用） |
-| `build.sh` | 一键构建：去重校验 + 转换 YAML |
+| `preprocess_list.py` | 组内去重 / 规则格式校验脚本（build 时调用） |
+| `build.sh` | 可选的一键构建：组内去重校验 + 转换 YAML |
 | `skills/direct-domain-manager/` | 内置的 AI Skill 定义，供各端 AI Agent 读取复用 |
 
 ## 规则文件格式
@@ -64,7 +64,7 @@ git pull origin main
 python3 convert_list_to_yaml.py DirectDomain.list DirectDomain.yaml
 ```
 
-**2. 或直接一键构建（含去重校验 + 转换）：**
+**2. 或直接一键构建（组内去重 + 格式校验 + 转换，批量修改或解决冲突后推荐）：**
 ```bash
 ./build.sh
 ```

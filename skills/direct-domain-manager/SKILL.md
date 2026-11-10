@@ -95,6 +95,8 @@ Run manually when needed:
 python3 convert_list_to_yaml.py DirectDomain.list DirectDomain.yaml
 ```
 
+Optional full build (use after bulk edits or conflict resolution): `./build.sh` (or `bash build.sh`) runs `preprocess_list.py` (removes duplicates **within the same category group** in place, backup `DirectDomain.list.bak` is gitignored, and validates rule types) and then the conversion above. It does NOT catch the same domain appearing in different categories; use the step 5 `grep` check (CI enforces global uniqueness).
+
 ### 3. View Current List
 
 Read `DirectDomain.list` to show current domains grouped by category comments.
@@ -106,8 +108,8 @@ DirectDomainList/
 ├── DirectDomain.list                    # Source list file (edit this)
 ├── DirectDomain.yaml                    # Generated YAML for Clash/Mihomo (do not edit by hand)
 ├── convert_list_to_yaml.py              # Conversion script (run from repo root)
-├── preprocess_list.py                   # (legacy) preprocessing helper
-├── build.sh                             # (legacy) build helper
+├── preprocess_list.py                   # Dedup (within a category group) + rule-format validation; called by build.sh
+├── build.sh                             # Optional full build: preprocess + convert (equivalent output to step 7 when the list is clean)
 └── skills/direct-domain-manager/
     └── SKILL.md                         # This skill definition
 ```
