@@ -342,8 +342,6 @@ DOMAIN-SUFFIX,miot-spec.org
 DOMAIN-SUFFIX,iqiyi.com
 DOMAIN-SUFFIX,ssports.com
 DOMAIN-SUFFIX,sportnanoapi.com
-# OPENAI API
-DOMAIN-SUFFIX,aihubmix.com
 # 路过图床
 DOMAIN-SUFFIX,ax1x.com
 DOMAIN-SUFFIX,imgse.com
