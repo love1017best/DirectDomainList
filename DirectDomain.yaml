@@ -461,3 +461,5 @@ payload:
   - DOMAIN-SUFFIX,byte-test.com
   # WorkBuddy
   - DOMAIN-SUFFIX,workbuddy.host
+  # 接龙管家
+  - DOMAIN-SUFFIX,jielong.com
